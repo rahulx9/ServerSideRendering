@@ -1,3 +1,4 @@
+import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { getPostData } from "../services/post";
 import styled from "styled-components";
