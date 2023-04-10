@@ -1,19 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "./index.css"
-import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import { createHashRouter, RouterProvider } from "react-router-dom";
+import { routes } from "./routes";
 
-import Post, { postLoader } from "./routes/post";
+const browserRouter = createHashRouter(routes);
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <Post />,
-    loader: postLoader,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
-  // <div>123</div>
+ReactDOM.hydrateRoot(
+  document.getElementById("root"),
+  <RouterProvider router={browserRouter} />
 );

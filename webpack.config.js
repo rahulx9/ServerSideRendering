@@ -30,7 +30,7 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-      publicPath: "build/"
+      publicPath: "build/",
     }),
   ],
   optimization: {

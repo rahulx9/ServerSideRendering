@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import { getPostData } from "../services/post";
+import { getPostData } from "../services/post.js";
 import styled from "styled-components";
 
 const StyledItemWrapper = styled.div`
