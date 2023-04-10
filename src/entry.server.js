@@ -7,6 +7,7 @@ import {
 } from "react-router-dom/server";
 import { routes } from "./routes";
 import { createFetchRequest } from "./utils/createFetchRequest";
+import { ServerStyleSheet } from "styled-components";
 
 export async function render(request) {
   try {
@@ -19,14 +20,19 @@ export async function render(request) {
     }
 
     let router = createStaticRouter(dataRoutes, context);
+    const sheet = new ServerStyleSheet();
+    const styles = sheet.getStyleTags();
+
     return ReactDOMServer.renderToString(
-      <React.StrictMode>
-        <StaticRouterProvider router={router} context={context} />
-      </React.StrictMode>
+      sheet.collectStyles(
+        <React.StrictMode>
+          <div>{styles}</div>
+          <StaticRouterProvider router={router} context={context} />
+        </React.StrictMode>
+      )
     );
   } catch (error) {
     console.log("error render", error);
     return "";
   }
 }
-
